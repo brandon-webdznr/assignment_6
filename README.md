@@ -1,5 +1,6 @@
 # Coffee Shop API (MongoDB + Express)
-This project is a RESTful API for managing coffee shop orders. It was built using Node.js, Express, and MongoDB as part of Assignment 5. The API supports full CRUD operations, filtering, and validation while following a clean and organized project structure.
+
+This project is a RESTful API for managing coffee shop orders. It was built using Node.js, Express, and MongoDB as part of Assignment 6. The API supports full CRUD operations, filtering, and validation while following a clean and organized project structure. This version also includes a live deployment on Render.
 
 ## Features
 - Create new coffee orders  
@@ -8,16 +9,18 @@ This project is a RESTful API for managing coffee shop orders. It was built usin
 - Retrieve a single order by ID  
 - Update existing orders  
 - Delete orders  
-- MongoDB connection using Mongoose  
-- Organized folder structure with routes, models, and config  
+- MongoDB Atlas connection using Mongoose  
+- Organized folder structure with routes, models, controllers, and config  
+- Fully deployed and accessible online via Render  
 
 ## Technologies Used
 - Node.js  
 - Express.js  
-- MongoDB  
+- MongoDB Atlas  
 - Mongoose  
 - dotenv  
 - Postman / Thunder Client for testing  
+- Render (cloud deployment)
 
 ## Installation
 1. Download or clone the project folder.  
@@ -25,9 +28,9 @@ This project is a RESTful API for managing coffee shop orders. It was built usin
 ```bash
 npm install
 ```
-3. Create a `.env` file in the project root:
+3. Create a `.env` file in the project root (LOCAL ONLY — not included in GitHub):
 ```
-MONGODB_URI=mongodb://127.0.0.1:27017/coffee_shop
+MONGODB_URI=your_local_or_atlas_connection_string
 PORT=3000
 ```
 4. Start the server:
@@ -40,10 +43,22 @@ Expected output:
 ✅ MongoDB connected
 ```
 
+## Live Deployment
+The API is deployed on Render and accessible at:
+
+```
+https://coffee-shop-api-ec5y.onrender.com
+```
+
+Render environment variables include:
+```
+MONGODB_URI=your_atlas_connection_string
+```
+
 ## API Endpoints
 
 ### Health Check
-`GET /`  
+`GET /health`  
 Returns a simple JSON message confirming the API is running.
 
 ### Create an Order
@@ -57,7 +72,7 @@ Example body:
   "price": 5.5,
   "isIced": true,
   "status": "pending",
-  "notes": "Oat milk, extra hot"
+  "notes": "Oat milk"
 }
 ```
 
@@ -84,31 +99,36 @@ Example body:
 
 ## Screenshots
 All required screenshots are included in the `/screenshots` folder:
-- create_order.png  
+- health.png  
+- post_orders.png  
 - get_orders.png  
-- filter_orders.png  
-- get_order_by_id.png  
-- update_order.png  
-- delete_order.png  
+- render_dashboard.png  
+- github_repo.png  
+- github_server_file.png  
 
 ## Project Structure
 ```
-assignment_5/
+assignment_6/
 ├── server.js
 ├── package.json
+├── package-lock.json
 ├── routes/
-│   └── orders.js
+│   └── orderRoutes.js
 ├── models/
 │   └── Order.js
+├── modules/
+│   └── orderController.js
 ├── config/
 │   └── db.js
-├── .env
+├── screenshots/
+│   └── (assignment screenshots)
+├── .gitignore
 ├── README.md
-├── AI_COLLABORATION.md
-└── screenshots/
+├── RESEARCH.md
+└── AI_COLLABORATION.md
 ```
 
 ## Author
 Brandon DaLuz  
-Assignment 5 – Coffee Shop API  
+Assignment 6 – Coffee Shop API  
 St. Petersburg College
