@@ -1,3 +1,13 @@
+**GitHub Repository:**  
+https://github.com/brandon-webdznr/assignment_6  
+
+**Live Render Deployment:**  
+https://coffee-shop-api-ec5y.onrender.com  
+
+**Health Check:**  
+https://coffee-shop-api-ec5y.onrender.com/health  
+
+
 # Coffee Shop API (MongoDB + Express)
 
 This project is a RESTful API for managing coffee shop orders. It was built using Node.js, Express, and MongoDB as part of Assignment 6. The API supports full CRUD operations, filtering, and validation while following a clean and organized project structure. This version also includes a live deployment on Render.
