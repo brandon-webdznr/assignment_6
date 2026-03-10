@@ -48,7 +48,7 @@ In this project, the `Order` model defines what an order should look like, and t
 
 ---
 
-## What I Learned About Deployment (Render)
+## Understanding Deployment with Render
 This was the biggest learning curve in the entire assignment. I ran into multiple issues that taught me how deployment actually works in the real world.
 
 ### The biggest things I learned:
@@ -61,6 +61,45 @@ This was the biggest learning curve in the entire assignment. I ran into multipl
 
 ### Why this mattered:
 This was the first time I understood how environment variables work differently in local development vs. cloud deployment. It also taught me why `.env` files should never be committed and how cloud platforms override or ignore them.
+
+---
+
+## CORS (Cross‑Origin Resource Sharing)
+CORS was something I had heard of before, but this assignment helped me understand why it matters. Browsers block requests from one domain to another by default for security reasons. This means if a website tries to call my API from a different domain, the browser will stop it unless I explicitly allow it.
+
+### What I learned about CORS:
+- CORS prevents unauthorized websites from calling your API  
+- You need to enable it when your frontend and backend are on different domains  
+- Render gives your API a public URL, so CORS becomes important  
+- Adding the `cors` middleware tells browsers that your API is safe to access  
+
+A real example would be a React app hosted on Netlify calling my API on Render — without CORS, the browser would block the request.
+
+---
+
+## Health Check Endpoints
+Render uses health checks to confirm your app is running. Without a health check, Render might think your app is failing and restart it.
+
+### What I learned:
+- A health check is a simple route like `/health`  
+- It returns something like `{ status: "ok" }`  
+- Render pings this route to make sure your app is alive  
+- Without it, your app might get stuck in a restart loop  
+
+This was easy to add but important for deployment stability.
+
+---
+
+## Free Tier Cold Starts
+This was something I noticed after deploying: sometimes the API took 30–60 seconds to respond. At first, I thought something was broken, but it turns out this is normal for free hosting.
+
+### What I learned about cold starts:
+- Free-tier apps “sleep” when they’re inactive to save resources  
+- When someone visits the API after it has been idle, Render has to “wake it up”  
+- This wake-up process is called a **cold start**  
+- Paid tiers keep apps running 24/7, so they don’t have this delay  
+
+In a real production app, cold starts would not be acceptable, but for learning and small projects, it’s totally fine.
 
 ---
 
@@ -100,6 +139,7 @@ This assignment helped me understand how all the pieces of a backend API fit tog
 - Deploy a live API using Render  
 - Fix environment variable issues that break deployment  
 - Understand the difference between local and cloud environments  
+- Configure CORS and health checks  
 - Test endpoints using API tools  
 
 Overall, this project gave me real experience with tools and workflows that are used in actual backend development, especially debugging and deployment — which ended up being the most valuable part of the assignment.
